@@ -28,4 +28,4 @@ jobs:
       - name: Show Deequ Result
         run: |
           echo "Deequ Report JSON:"
-          echo "${{ steps.run_databricks_job.outputs.notebook-output }}"
+          echo '${{ steps.run_databricks_job.outputs.notebook-output }}'
