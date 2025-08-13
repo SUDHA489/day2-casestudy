@@ -25,3 +25,5 @@ jobs:
         run: |
           # Optionally fetch report from DBFS to attach as artifact using databricks' CLI or REST API
           echo "Deequ failed — see DBFS report"
+
+          
