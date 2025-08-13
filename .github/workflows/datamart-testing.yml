@@ -29,3 +29,12 @@ jobs:
         run: |
           echo "Deequ Report JSON:"
           echo '${{ steps.run_databricks_job.outputs.notebook-output }}'
+
+      - name: Rollback on Failure
+        if: failure()
+        uses: databricks/run-notebook@v0
+        with:
+          databricks-host: ${{ secrets.DATABRICKS_HOST }}
+          databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
+          workspace-notebook-path: /Users/traininguser8@sudosu.ai/rollback_notebook
+          existing-cluster-id: ${{ secrets.DATABRICKS_CLUSTER_ID }}
