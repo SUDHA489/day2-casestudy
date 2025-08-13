@@ -3,14 +3,14 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
- 
+
 jobs:
   databricks-quality-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
- 
+
       - name: Trigger Databricks Job
         id: run_databricks_job
         uses: databricks/run-notebook@v0
@@ -19,14 +19,13 @@ jobs:
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
           workspace-notebook-path: /Users/traininguser8@sudosu.ai/day2_casestudy
           existing-cluster-id: ${{ secrets.DATABRICKS_CLUSTER_ID }}
- 
+
       - name: Download Deequ Report (if failed)
         if: failure()
         run: |
-          # Optionally fetch report from DBFS to attach as artifact using databricks' CLI or REST API
           echo "Deequ failed — see DBFS report"
-      
+
       - name: Show Deequ Result
         run: |
           echo "Deequ Report JSON:"
-          echo "${{ steps.run_deequ.outputs.notebook-output }}"
+          echo "${{ steps.run_databricks_job.outputs.notebook-output }}"
