@@ -1,0 +1,6 @@
+pyspark
+pydeequ  
+pytest
+pandas
+scipy
+delta-spark   
