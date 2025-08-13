@@ -17,7 +17,7 @@ jobs:
         with:
           databricks-host: ${{ secrets.DATABRICKS_HOST }}
           databricks-token: ${{ secrets.DATABRICKS_TOKEN }}
-          workspace-notebook-path: /Workspace/Users/traininguser8@sudosu.ai/day2_casestudy
+          workspace-notebook-path: Users/traininguser8@sudosu.ai/day2_casestudy
           existing-cluster-id: ${{ secrets.DATABRICKS_CLUSTER_ID }}
  
       - name: Download Deequ Report (if failed)
@@ -25,5 +25,3 @@ jobs:
         run: |
           # Optionally fetch report from DBFS to attach as artifact using databricks' CLI or REST API
           echo "Deequ failed — see DBFS report"
-
-          
